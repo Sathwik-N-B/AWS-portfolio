@@ -35,6 +35,14 @@ export const skills = [
 
 export const projects = [
   {
+    title: 'Fridge Chef',
+    subtitle: 'Recipe agent on Amazon Bedrock',
+    description:
+      'An agent that looks at a photo of your fridge and suggests what to cook. It calls a Bedrock vision tool (Nova Lite) to identify ingredients, then plans recipes from the result. Built with Strands Agents; Amazon Rekognition was tested too, but a vision LLM identified the items on the shelves far better.',
+    tags: ['Python', 'Strands Agents', 'Amazon Bedrock', 'Amazon Rekognition'],
+    link: '',
+  },
+  {
     title: 'AI Knowledge Assistant',
     subtitle: 'RAG / Agentic proof of concept',
     description:
@@ -49,6 +57,30 @@ export const projects = [
       'An AI agent built on Microsoft Foundry and Foundry IQ that retrieves relevant information from connected knowledge sources, with MCP integrated for dynamic discovery and invocation of external tools.',
     tags: ['Microsoft Foundry', 'MCP', 'Python', 'RAG', 'Azure AI Search'],
     link: '',
+  },
+  {
+    title: 'ConfDiff: Multiple Random Pairings',
+    subtitle: 'Machine learning course project (team of two)',
+    description:
+      'Extended the ConfDiffABS method to use multiple random pairings per sample (a configurable k_pairs setting), then evaluated it in PyTorch on MNIST and UCI datasets. Co-implemented with a teammate and co-authored the project report.',
+    tags: ['Python', 'PyTorch', 'NumPy', 'Machine Learning'],
+    link: 'https://github.com/Sathwik-N-B/Project-ConfDiff-kpair',
+  },
+  {
+    title: 'Resume Parser',
+    subtitle: 'Built on the open-source OpenResume',
+    description:
+      'A TypeScript and Next.js resume parser that reads a PDF resume and shows how an ATS would read it, running entirely in the browser so no data leaves the device. Based on the open-source OpenResume project.',
+    tags: ['TypeScript', 'Next.js', 'React', 'Redux Toolkit', 'PDF.js'],
+    link: 'https://github.com/Sathwik-N-B/Resume_Parser',
+  },
+  {
+    title: 'NeetHub',
+    subtitle: 'Chrome extension',
+    description:
+      'A Chrome extension that brings LeetHub-style automation to NeetCode. It captures accepted submissions, with runtime and memory stats, and pushes them to your GitHub repo, with a popup for GitHub sign-in and solved-problem stats.',
+    tags: ['TypeScript', 'Chrome Extension', 'GitHub API'],
+    link: 'https://github.com/Sathwik-N-B/NeetHub',
   },
 ]
 
