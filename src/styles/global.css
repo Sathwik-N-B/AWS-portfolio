@@ -9,6 +9,37 @@
   --border: #2a3541;
 }
 
+/* Themes switched by the terminal's `theme` command */
+:root[data-theme='neon'] {
+  --bg: #07070f; --bg-alt: #0d0d1c; --card: #12122a; --text: #eaf6ff;
+  --muted: #8fa3c8; --accent: #00f5d4; --accent-text: #07070f; --border: #2b2b66;
+}
+:root[data-theme='pastel'] {
+  --bg: #fdf6f0; --bg-alt: #f6ebf5; --card: #ffffff; --text: #3b3552;
+  --muted: #6e6788; --accent: #c05fa8; --accent-text: #ffffff; --border: #e6d6e8;
+}
+
+:root[data-theme='halloween'] {
+  --bg: #120a1a; --bg-alt: #1a0f26; --card: #231433; --text: #f4e9ff;
+  --muted: #b79bd1; --accent: #ff7a00; --accent-text: #120a1a; --border: #4a2a66;
+}
+:root[data-theme='halloween'] .hero h1 { text-shadow: 0 0 18px rgba(255, 122, 0, 0.55); }
+/* A bat flies across the top of the page in halloween mode */
+:root[data-theme='halloween'] body::after {
+  content: '🦇'; position: fixed; top: 72px; left: -60px; font-size: 2rem;
+  pointer-events: none; z-index: 5; animation: bat-fly 14s linear infinite;
+}
+@keyframes bat-fly {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(30vw, 40px); }
+  50% { transform: translate(60vw, -10px); }
+  75% { transform: translate(90vw, 50px); }
+  100% { transform: translate(115vw, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme='halloween'] body::after { animation: none; display: none; }
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 64px; }
@@ -46,6 +77,12 @@ a { color: var(--accent); }
 .hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.15; margin: 0 0 16px; }
 .tagline { font-size: 1.2rem; color: var(--muted); max-width: 640px; margin: 0 0 28px; }
 .hero-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero-hint { margin: 28px 0 0; color: var(--muted); }
+.hero-hint button {
+  background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer;
+  font: inherit; text-decoration: underline;
+}
 
 .btn {
   display: inline-block; padding: 10px 20px; border-radius: 8px; font-weight: 600;

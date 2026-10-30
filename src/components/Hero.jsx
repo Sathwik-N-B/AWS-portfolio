@@ -1,6 +1,6 @@
 import { profile } from '../data/content.js'
 
-export default function Hero() {
+export default function Hero({ onOpenTerminal }) {
   return (
     <section id="top" className="hero">
       <div className="container">
@@ -12,6 +12,10 @@ export default function Hero() {
           <a className="btn btn-ghost" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
           <a className="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
+        <p className="hero-hint">
+          Psst… there's a secret terminal on this page.{' '}
+          <button type="button" onClick={onOpenTerminal}>Open it, find my superpower, and try the 🎃 halloween command</button>
+        </p>
       </div>
     </section>
   )

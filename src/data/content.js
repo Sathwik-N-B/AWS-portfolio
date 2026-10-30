@@ -40,7 +40,7 @@ export const projects = [
     description:
       'An agent that looks at a photo of your fridge and suggests what to cook. It calls a Bedrock vision tool (Nova Lite) to identify ingredients, then plans recipes from the result. Built with Strands Agents; Amazon Rekognition was tested too, but a vision LLM identified the items on the shelves far better.',
     tags: ['Python', 'Strands Agents', 'Amazon Bedrock', 'Amazon Rekognition'],
-    link: '',
+    link: 'https://github.com/Sathwik-N-B/fridge-chef',
   },
   {
     title: 'AI Knowledge Assistant',
@@ -84,10 +84,19 @@ export const projects = [
   },
 ]
 
+// Halloween edition of the superpowers: same real facts, spooky titles. Shown when the theme is "halloween".
+export const halloweenSuperpowers = [
+  { title: '🎃 The Fridge Whisperer', text: 'Summons recipes from a photo of your fridge using an Amazon Bedrock agent. Even the leftovers are not safe.' },
+  { title: '👻 The Ghost in the Retrieval', text: 'Haunts your documents with BM25, FAISS, reranking and GraphRAG until the right answer appears.' },
+  { title: '🧙 The Agent Conjurer', text: 'Casts RAG and agentic AI prototypes that retrieve, reason and call tools on command.' },
+  { title: '🦇 The Quantum Night Owl', text: 'After dark, teaches PyTorch models to crack quantum computing problems.' },
+  { title: '🍬 Treat: AWS Certified', text: 'Carries an AWS Certified AI Practitioner badge. No trick, just treat.' },
+]
+
 // Used by the creative feature (added later). Replace the TODO items with real facts about you.
 export const superpowers = [
-  { title: 'The Speed Tuner', text: 'Took dashboard loads from 3.2s down to 800ms by tuning queries and pagination.' },
-  { title: 'The Pipeline Wizard', text: 'Cut deploy times from 45 minutes to under 15 with parallel CI/CD stages.' },
+  { title: 'The Fridge Whisperer', text: 'Built an agent on Amazon Bedrock that looks at a photo of your fridge and tells you what to cook.' },
+  { title: 'The Retrieval Tinkerer', text: 'Combines BM25, FAISS, reranking and GraphRAG so a chatbot finds the right answer in your documents.' },
   { title: 'The Agent Builder', text: 'Builds RAG and agentic AI prototypes that retrieve, reason and call tools.' },
   { title: 'The Quantum Explorer', text: 'Currently teaching PyTorch models to tackle quantum computing problems.' },
   { title: 'TODO: your fun fact', text: 'TODO: replace with a personal fun fact, hobby or story.' },
