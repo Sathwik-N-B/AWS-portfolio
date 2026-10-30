@@ -50,14 +50,6 @@ export const projects = [
     tags: ['Microsoft Foundry', 'MCP', 'Python', 'RAG', 'Azure AI Search'],
     link: '',
   },
-  {
-    title: 'Accenture: Backend and Cloud Engineering',
-    subtitle: 'Achievements, 2021–2024',
-    description:
-      'Cut deployment time from 45 to under 15 minutes with GitHub Actions CI/CD, sped dashboard loads from 3.2s to 800ms, and migrated legacy monoliths to Kubernetes-deployed Python microservices (35% faster processing).',
-    tags: ['FastAPI', 'Flask', 'PostgreSQL', 'Kubernetes', 'AWS S3', 'Redis', 'Celery'],
-    link: '',
-  },
 ]
 
 // Used by the creative feature (added later). Replace the TODO items with real facts about you.
