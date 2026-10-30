@@ -45,6 +45,11 @@
   flex: 1; background: none; border: 0; outline: 0; color: inherit; font: inherit; min-width: 0;
 }
 
+.dont-press {
+  margin-top: 6px; padding: 4px 10px; cursor: pointer; font: inherit;
+  background: #3a0d0d; color: #ff8a8a; border: 1px solid #ff5a5a; border-radius: 6px;
+}
+
 /* Vending machine */
 .vm { margin: 8px 0; }
 .vm-body {

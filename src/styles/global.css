@@ -24,21 +24,6 @@
   --muted: #b79bd1; --accent: #ff7a00; --accent-text: #120a1a; --border: #4a2a66;
 }
 :root[data-theme='halloween'] .hero h1 { text-shadow: 0 0 18px rgba(255, 122, 0, 0.55); }
-/* A bat flies across the top of the page in halloween mode */
-:root[data-theme='halloween'] body::after {
-  content: '🦇'; position: fixed; top: 72px; left: -60px; font-size: 2rem;
-  pointer-events: none; z-index: 5; animation: bat-fly 14s linear infinite;
-}
-@keyframes bat-fly {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(30vw, 40px); }
-  50% { transform: translate(60vw, -10px); }
-  75% { transform: translate(90vw, 50px); }
-  100% { transform: translate(115vw, 0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  :root[data-theme='halloween'] body::after { animation: none; display: none; }
-}
 
 * { box-sizing: border-box; }
 

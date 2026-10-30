@@ -1,11 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
 import { about, skills, projects, profile } from '../data/content.js'
 import VendingMachine from './VendingMachine.jsx'
+import { setSound, isSoundOn } from '../sfx.js'
 
 const THEMES = ['dark', 'neon', 'pastel', 'halloween']
-const CHIPS = ['help', 'about', 'skills', 'projects', 'superpower', 'halloween']
+const CHIPS = ['help', 'about', 'skills', 'projects', 'superpower', 'halloween', 'cauldron']
 
-function runCommand(input, setTheme) {
+const spook = (type) => window.dispatchEvent(new CustomEvent('halloween', { detail: type }))
+
+function brewPotion() {
+  const pool = skills.flatMap((s) => s.items).sort(() => Math.random() - 0.5)
+  const [a, b, c, d] = pool
+  return `🧪 Potion of ${a}: eye of ${b}, a pinch of ${c}, stirred counter-clockwise with ${d}. Drink at your own risk.`
+}
+
+function runCommand(input, { theme, setTheme }) {
   const [cmd, ...args] = input.trim().toLowerCase().split(/\s+/)
   switch (cmd) {
     case 'help':
@@ -15,7 +24,10 @@ function runCommand(input, setTheme) {
           <li><b>skills</b> – my tech superpowers</li>
           <li><b>projects</b> – things I've built</li>
           <li><b>superpower</b> – dispense a random superpower</li>
-          <li><b>halloween</b> – 🎃 spooky mode: trick-or-treat superpowers</li>
+          <li><b>halloween</b> – 🎃 spooky mode (flashlight hunt, ghosts, bats…)</li>
+          <li><b>boo</b> · <b>trick</b> · <b>ghost</b> – spooky tricks (halloween mode)</li>
+          <li><b>cauldron</b> – brew a potion from my skills</li>
+          <li><b>sound</b> on | off – spooky sound effects (off by default)</li>
           <li><b>theme</b> dark | neon | pastel | halloween – re-skin the site</li>
           <li><b>contact</b> – get in touch</li>
           <li><b>clear</b> – clear the screen · <b>exit</b> – close</li>
@@ -43,7 +55,31 @@ function runCommand(input, setTheme) {
       return <VendingMachine />
     case 'halloween':
       setTheme('halloween')
-      return <p>🎃 Spooky mode on. Type <b>superpower</b> to trick-or-treat, or <b>theme dark</b> to escape.</p>
+      return (
+        <div>
+          <p>🎃 Spooky mode on! Pop the ghosts, poke the spider, hit <b>🔦 Flashlight hunt</b> (bottom-left), or type <b>superpower</b> to trick-or-treat. <b>theme dark</b> escapes.</p>
+          <button type="button" className="dont-press" onClick={() => spook('boo')}>Don't press this</button>
+        </div>
+      )
+    case 'boo':
+    case 'trick':
+    case 'ghost': {
+      if (theme !== 'halloween') return <p>That only works in halloween mode. Type <b>halloween</b> first.</p>
+      spook(cmd)
+      const msg = {
+        boo: '👻 BOO!',
+        trick: '🃏 Trick! Everything looks cursed… give it a second.',
+        ghost: '👻 A ghost drifts onto the page. Catch it!',
+      }
+      return <p>{msg[cmd]}</p>
+    }
+    case 'cauldron':
+      return <p>{brewPotion()}</p>
+    case 'sound': {
+      const on = args[0] ? args[0] === 'on' : !isSoundOn()
+      setSound(on)
+      return <p>{on ? '🔊 Sound on.' : '🔇 Sound off.'}</p>
+    }
     case 'theme': {
       const t = args[0]
       if (!THEMES.includes(t)) return <p>Usage: theme {THEMES.join(' | ')}</p>
@@ -63,7 +99,7 @@ function runCommand(input, setTheme) {
   }
 }
 
-export default function SuperpowerTerminal({ open, setOpen }) {
+export default function SuperpowerTerminal({ open, setOpen, theme, setTheme }) {
   const [lines, setLines] = useState([])
   const [value, setValue] = useState('')
   const [history, setHistory] = useState([])
@@ -71,10 +107,6 @@ export default function SuperpowerTerminal({ open, setOpen }) {
   const bodyRef = useRef(null)
   const inputRef = useRef(null)
   const nextId = useRef(0)
-
-  const setTheme = (t) => {
-    document.documentElement.dataset.theme = t === 'dark' ? '' : t
-  }
 
   const submit = (raw) => {
     const text = raw.trim()
@@ -84,7 +116,7 @@ export default function SuperpowerTerminal({ open, setOpen }) {
     const cmd = text.toLowerCase().split(/\s+/)[0]
     if (cmd === 'clear') return setLines([])
     if (cmd === 'exit' || cmd === 'close') return setOpen(false)
-    setLines((l) => [...l, { id: nextId.current++, cmd: text, out: runCommand(text, setTheme) }])
+    setLines((l) => [...l, { id: nextId.current++, cmd: text, out: runCommand(text, { theme, setTheme }) }])
   }
 
   const onKeyDown = (e) => {
