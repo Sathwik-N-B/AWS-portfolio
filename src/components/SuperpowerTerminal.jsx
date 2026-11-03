@@ -211,6 +211,8 @@ export default function SuperpowerTerminal({ open, setOpen, theme, setTheme }) {
           e.preventDefault()
           submit(value)
           setValue('')
+          // On phones, hide the keyboard after a command so the output is visible.
+          if (window.matchMedia('(pointer: coarse)').matches) inputRef.current?.blur()
         }}
       >
         <span aria-hidden="true">$</span>
