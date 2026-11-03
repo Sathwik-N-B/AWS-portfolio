@@ -8,6 +8,7 @@ export const profile = {
   email: 'sathwiknb1998@gmail.com',
   github: 'https://github.com/Sathwik-N-B',
   linkedin: 'https://www.linkedin.com/in/sathwiknb',
+  resume: '/Sathwik_Resume.pdf', // public/Sathwik_Resume.pdf, a copy with the phone number removed
 }
 
 export const about = {

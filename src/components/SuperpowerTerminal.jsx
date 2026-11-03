@@ -29,6 +29,7 @@ function runCommand(input, { theme, setTheme }) {
           <li><b>cauldron</b> – brew a potion from my skills</li>
           <li><b>sound</b> on | off – spooky sound effects (off by default)</li>
           <li><b>theme</b> dark | neon | pastel | halloween – re-skin the site</li>
+          <li><b>resume</b> – open my resume (PDF)</li>
           <li><b>contact</b> – get in touch</li>
           <li><b>clear</b> – clear the screen · <b>exit</b> – close</li>
         </ul>
@@ -86,6 +87,8 @@ function runCommand(input, { theme, setTheme }) {
       setTheme(t)
       return <p>Theme set to {t}.</p>
     }
+    case 'resume':
+      return <p><a href={profile.resume} target="_blank" rel="noreferrer">Open my resume (PDF)</a></p>
     case 'contact':
       return (
         <p>

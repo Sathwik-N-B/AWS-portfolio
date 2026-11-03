@@ -26,6 +26,7 @@ export default function Nav() {
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
+          <a href={profile.resume} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Resume</a>
         </nav>
       </div>
     </header>

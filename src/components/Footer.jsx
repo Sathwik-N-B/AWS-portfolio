@@ -7,6 +7,7 @@ export default function Footer() {
         <p>Let's connect:</p>
         <p className="footer-links">
           <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a href={profile.resume} target="_blank" rel="noreferrer">Resume</a>
           <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
           <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
