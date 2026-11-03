@@ -49,7 +49,7 @@ export const projects = [
     description:
       'A local-first, privacy-preserving RAG app. It combines hybrid BM25 + FAISS retrieval, HyDE query expansion and cross-encoder reranking, adds GraphRAG for single-hop reasoning, and supports local (Ollama) or cloud-hosted LLMs. Containerized with Docker.',
     tags: ['Python', 'Streamlit', 'FAISS', 'BM25', 'GraphRAG', 'Ollama', 'Docker'],
-    link: '',
+    link: 'https://github.com/Sathwik-N-B/RAG-Chatbot',
   },
   {
     title: 'Enterprise Knowledge Agent',
