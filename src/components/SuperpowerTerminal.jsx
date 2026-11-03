@@ -142,7 +142,29 @@ export default function SuperpowerTerminal({ open, setOpen, theme, setTheme }) {
   }
 
   useEffect(() => {
-    if (open) inputRef.current?.focus()
+    // On phones, focusing at once pops the keyboard over the page; let people tap the chips first.
+    const touch = window.matchMedia('(pointer: coarse)').matches
+    if (open && !touch) inputRef.current?.focus()
+  }, [open])
+
+  // Keep the terminal inside the visible area when the phone keyboard opens.
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!open || !vv) return
+    const fit = () => {
+      const root = document.documentElement.style
+      root.setProperty('--vv-h', `${vv.height}px`)
+      root.setProperty('--vv-bottom', `${Math.max(0, window.innerHeight - vv.offsetTop - vv.height)}px`)
+    }
+    fit()
+    vv.addEventListener('resize', fit)
+    vv.addEventListener('scroll', fit)
+    return () => {
+      vv.removeEventListener('resize', fit)
+      vv.removeEventListener('scroll', fit)
+      document.documentElement.style.removeProperty('--vv-h')
+      document.documentElement.style.removeProperty('--vv-bottom')
+    }
   }, [open])
 
   useEffect(() => {

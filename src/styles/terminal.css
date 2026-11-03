@@ -72,7 +72,12 @@
 }
 
 @media (max-width: 720px) {
-  .terminal { right: 8px; left: 8px; bottom: 8px; width: auto; height: 55vh; }
+  .terminal {
+    right: 8px; left: 8px; width: auto;
+    bottom: calc(var(--vv-bottom, 0px) + 8px);
+    height: min(55dvh, calc(var(--vv-h, 100dvh) - 16px));
+    min-height: 200px;
+  }
   .t-form input { font-size: 16px; } /* prevents iOS zoom on focus */
 }
 
