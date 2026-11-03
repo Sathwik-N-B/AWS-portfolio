@@ -2,7 +2,7 @@
 .t-launcher {
   position: fixed; right: 16px; bottom: 16px; z-index: 20;
   background: var(--accent); color: var(--accent-text); border: 0; cursor: pointer;
-  font: 600 0.95rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font: 600 0.95rem ui-monospace, SFMono-Regular, Menlo, Consolas, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', monospace;
   padding: 12px 16px; border-radius: 999px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   animation: t-pulse 2.2s ease-in-out infinite;
 }
@@ -28,7 +28,7 @@
   font: inherit;
 }
 .t-head button { padding: 0 8px; }
-.t-body { flex: 1; overflow-y: auto; padding: 12px; }
+.t-body { flex: 1; overflow-y: auto; padding: 12px; scrollbar-color: #2a3541 #0b0f14; scrollbar-width: thin; }
 .t-body p { margin: 0 0 6px; }
 .t-body a { color: var(--accent); }
 .t-dim { color: #8b98a5; }
@@ -36,8 +36,8 @@
 .t-entry { margin-bottom: 10px; }
 .t-list { margin: 0; padding-left: 18px; }
 
-.t-chips { display: flex; gap: 6px; overflow-x: auto; padding: 6px 12px; border-top: 1px solid #1d2630; }
-.t-chips button { padding: 4px 10px; white-space: nowrap; color: #b8c6d4; }
+.t-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; border-top: 1px solid #1d2630; }
+.t-chips button { padding: 3px 9px; white-space: nowrap; color: #b8c6d4; font-size: 0.8rem; }
 .t-chips button:hover, .vm-again:hover { border-color: var(--accent); color: var(--accent); }
 
 .t-form { display: flex; gap: 8px; padding: 10px 12px; border-top: 1px solid #1d2630; }

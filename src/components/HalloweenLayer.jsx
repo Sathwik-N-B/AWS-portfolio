@@ -43,6 +43,28 @@ export default function HalloweenLayer() {
   const spotRef = useRef(null)
   const toastTimer = useRef(null)
   const nextGhost = useRef(100)
+  const pumpkinRefs = useRef({})
+  const pointer = useRef({ x: -999, y: -999 })
+
+  // A pumpkin is only visible (and clickable) while the flashlight is close to it.
+  // Pumpkin positions are in page coordinates and the pointer is in viewport coordinates.
+  const reveal = () => {
+    const w = document.documentElement.clientWidth
+    pumpkins.forEach((p) => {
+      const el = pumpkinRefs.current[p.id]
+      if (!el) return
+      const d = Math.hypot(pointer.current.x - (p.x / 100) * w, pointer.current.y - (p.y - window.scrollY))
+      const o = Math.max(0, Math.min(1, (110 - d) / 40))
+      const done = found.includes(p.id)
+      el.style.opacity = done ? Math.min(o, 0.35) : o
+      el.style.pointerEvents = !done && o > 0.3 ? 'auto' : 'none'
+    })
+  }
+  const revealRef = useRef(reveal)
+  revealRef.current = reveal
+  useEffect(() => {
+    if (hunt) revealRef.current()
+  }, [hunt, found, pumpkins])
 
   const showToast = useCallback((content, ms = 3500) => {
     clearTimeout(toastTimer.current)
@@ -108,7 +130,10 @@ export default function HalloweenLayer() {
       if (!el) return
       el.style.setProperty('--x', `${x}px`)
       el.style.setProperty('--y', `${y}px`)
+      pointer.current = { x, y }
+      revealRef.current()
     }
+    const onScroll = () => revealRef.current()
     const onPointer = (e) => move(e.clientX, e.clientY)
     const onTouch = (e) => {
       const t = e.touches[0]
@@ -118,7 +143,9 @@ export default function HalloweenLayer() {
     window.addEventListener('pointermove', onPointer)
     window.addEventListener('touchstart', onTouch, { passive: true })
     window.addEventListener('touchmove', onTouch, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
+      window.removeEventListener('scroll', onScroll)
       window.removeEventListener('pointermove', onPointer)
       window.removeEventListener('touchstart', onTouch)
       window.removeEventListener('touchmove', onTouch)
@@ -228,8 +255,9 @@ export default function HalloweenLayer() {
             {pumpkins.map((p) => (
               <button
                 key={p.id}
+                ref={(el) => { pumpkinRefs.current[p.id] = el }}
                 type="button"
-                className={`hw-pumpkin${found.includes(p.id) ? ' found' : ''}`}
+                className="hw-pumpkin"
                 style={{ left: `${p.x}%`, top: p.y }}
                 aria-label="Hidden pumpkin"
                 onClick={() => findPumpkin(p.id)}

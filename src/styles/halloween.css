@@ -76,9 +76,9 @@
 .hw-pumpkins { position: absolute; top: 0; left: 0; width: 100%; z-index: 4; pointer-events: none; }
 .hw-pumpkin {
   position: absolute; background: none; border: 0; padding: 4px; cursor: pointer;
-  font-size: 2.2rem; pointer-events: auto; transform: translate(-50%, -50%);
+  font-size: 2.2rem; transform: translate(-50%, -50%);
+  opacity: 0; pointer-events: none; /* revealed by the flashlight; see reveal() in HalloweenLayer.jsx */
 }
-.hw-pumpkin.found { opacity: 0.25; pointer-events: none; }
 
 /* HUD and toast */
 .hw-hud {
@@ -86,7 +86,7 @@
   display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
 }
 .hw-btn {
-  font: 600 0.8rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font: 600 0.8rem ui-monospace, SFMono-Regular, Menlo, Consolas, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', monospace;
   background: var(--card); color: var(--text); border: 1px solid var(--accent);
   border-radius: 999px; padding: 6px 12px;
 }

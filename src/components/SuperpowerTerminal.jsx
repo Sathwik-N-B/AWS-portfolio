@@ -95,7 +95,12 @@ function runCommand(input, { theme, setTheme }) {
         </p>
       )
     default:
-      return <p>Command not found: {cmd}. Type <b>help</b>.</p>
+      // Typing just a theme name (neon, pastel, dark) is a natural thing to try, so accept it.
+      if (THEMES.includes(cmd)) {
+        setTheme(cmd)
+        return <p>Theme set to {cmd}.</p>
+      }
+      return <p>Command not found: {cmd}. Type <b>help</b>, or try <b>theme neon</b>.</p>
   }
 }
 

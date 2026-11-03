@@ -57,7 +57,7 @@ a { color: var(--accent); }
 }
 
 /* Hero */
-.hero { padding: 96px 0 72px; }
+.hero { padding: 96px 0 24px; }
 .eyebrow { color: var(--accent); margin: 0 0 8px; font-weight: 600; }
 .hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.15; margin: 0 0 16px; }
 .tagline { font-size: 1.2rem; color: var(--muted); max-width: 640px; margin: 0 0 28px; }
@@ -117,5 +117,5 @@ a { color: var(--accent); }
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 14px 16px; }
-  .hero { padding: 64px 0 48px; }
+  .hero { padding: 64px 0 16px; }
 }
