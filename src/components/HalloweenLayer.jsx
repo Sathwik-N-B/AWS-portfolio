@@ -280,14 +280,14 @@ export default function HalloweenLayer() {
       {toast && <div className="hw-toast" role="status">{toast}</div>}
 
       <div className="hw-hud">
-        <button type="button" className="hw-btn" onClick={toggleHunt}>
-          {hunt ? '💡 Lights on' : '🔦 Flashlight hunt'}
+        <button type="button" className="hw-btn" onClick={toggleHunt} aria-label={hunt ? 'Lights on' : 'Flashlight hunt'}>
+          {hunt ? '💡' : '🔦'}<span className="hw-label"> {hunt ? 'Lights on' : 'Flashlight hunt'}</span>
         </button>
-        <button type="button" className="hw-btn" onClick={toggleSound} aria-pressed={sound}>
-          {sound ? '🔊 Sound on' : '🔇 Sound off'}
+        <button type="button" className="hw-btn" onClick={toggleSound} aria-pressed={sound} aria-label={sound ? 'Sound on' : 'Sound off'}>
+          {sound ? '🔊' : '🔇'}<span className="hw-label"> {sound ? 'Sound on' : 'Sound off'}</span>
         </button>
-        <button type="button" className="hw-btn" onClick={giveHint} title="Scroll to a pumpkin that is still hidden">
-          🍬 {found.length}/{PUMPKIN_COUNT} · 🧭 Hint
+        <button type="button" className="hw-btn" onClick={giveHint} aria-label="Hint" title="Scroll to a pumpkin that is still hidden">
+          🍬 {found.length}/{PUMPKIN_COUNT} · 🧭<span className="hw-label"> Hint</span>
         </button>
       </div>
     </>

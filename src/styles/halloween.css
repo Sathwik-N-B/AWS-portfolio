@@ -139,6 +139,10 @@ body.hw-glitch main :is(h1, h2, h3, p) { animation: hw-glitch 0.25s steps(2) 7; 
   .hw-web { font-size: 2.6rem; }
   .hw-spider { right: 70px; }
   .hw-flash span { font-size: 6rem; }
+  /* One slim icon row above the launcher instead of a tall stack over the text */
+  .hw-hud { flex-direction: row; bottom: 76px; gap: 6px; }
+  .hw-btn { padding: 5px 10px; }
+  .hw-label { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
