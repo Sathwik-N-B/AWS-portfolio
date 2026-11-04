@@ -75,9 +75,15 @@
   .terminal {
     right: 8px; left: 8px; width: auto;
     bottom: calc(var(--vv-bottom, 0px) + 8px);
-    height: min(55dvh, calc(var(--vv-h, 100dvh) - 16px));
-    min-height: 200px;
+    height: min(42dvh, calc(var(--vv-h, 100dvh) - 16px));
+    min-height: 240px;
+    font-size: 0.82rem;
   }
+  .t-head { padding: 4px 10px; }
+  .t-body { padding: 8px 10px; }
+  .t-chips { gap: 4px; padding: 5px 10px; }
+  .t-chips button { padding: 2px 7px; font-size: 0.74rem; }
+  .t-form { padding: 6px 10px; }
   .t-form input { font-size: 16px; } /* prevents iOS zoom on focus */
 }
 
