@@ -94,11 +94,11 @@ export const halloweenSuperpowers = [
   { title: '🍬 Treat: AWS Certified', text: 'Carries an AWS Certified AI Practitioner badge. No trick, just treat.' },
 ]
 
-// Used by the creative feature (added later). Replace the TODO items with real facts about you.
+// Used by the creative feature: the cards the vending machine hands out.
 export const superpowers = [
   { title: 'The Fridge Whisperer', text: 'Built an agent on Amazon Bedrock that looks at a photo of your fridge and tells you what to cook.' },
   { title: 'The Retrieval Tinkerer', text: 'Combines BM25, FAISS, reranking and GraphRAG so a chatbot finds the right answer in your documents.' },
   { title: 'The Agent Builder', text: 'Builds RAG and agentic AI prototypes that retrieve, reason and call tools.' },
   { title: 'The Quantum Explorer', text: 'Currently teaching PyTorch models to tackle quantum computing problems.' },
-  { title: 'TODO: your fun fact', text: 'TODO: replace with a personal fun fact, hobby or story.' },
+  { title: 'The Coffee Paradox', text: 'Coffee makes me sleepy instead of awake. I get my best sleep right after a cup.' },
 ]
